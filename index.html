@@ -83,19 +83,32 @@
       width: 0;
       transition: width 1s linear;
     }
+
+.ad-container {
+  width: 100%; /* Ancho completo */
+  text-align: center; /* Centrar el anuncio horizontalmente */
+  margin-bottom: 10px; /* Espacio entre el anuncio y el contenedor */
+}
+
+.ad-container iframe {
+  display: inline-block; /* Asegura que el iframe se comporte como un bloque alineado */
+}
   </style>
 </head>
 <body>
-	<script type="text/javascript">
-	atOptions = {
-		'key' : 'cdec641786b526c49b42a0a479516bee',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//decorationmercifulmonth.com/cdec641786b526c49b42a0a479516bee/invoke.js"></script>
+  <!-- Anuncio justo encima del contenedor -->
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'cdec641786b526c49b42a0a479516bee',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//decorationmercifulmonth.com/cdec641786b526c49b42a0a479516bee/invoke.js"></script>
+  </div>
 	
   <div class="container">
     <!-- Imagen agregada aquí -->
