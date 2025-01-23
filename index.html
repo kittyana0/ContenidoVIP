@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página con Temporizador</title>
+  <style>
+    /* Reseteo básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fbe7f4; /* Fondo rosa pastel */
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff; /* Blanco limpio */
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .container img {
+      width: 100%; /* Imagen a tamaño completo */
+      border-radius: 10px; /* Bordes redondeados */
+      margin-bottom: 20px; /* Espacio debajo de la imagen */
+    }
+
+    .button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ff80ab; /* Rosa pastel */
+      color: #fff;
+      border: solid 2px #f8bbd0; /* Borde rosado */
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff4081; /* Rosa más oscuro */
+    }
+
+    .button:disabled {
+      background-color: #f8bbd0; /* Rosa claro desactivado */
+      cursor: not-allowed;
+    }
+
+    .button span {
+      margin-left: auto;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .timer-bar {
+      height: 3px;
+      background-color: #80deea; /* Azul pastel */
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      transition: width 1s linear;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Imagen agregada aquí -->
+    <img src="img/mejia.jpeg" alt="Imagen descriptiva">
+
+    <button class="button" id="btnContent">
+      Exclusive Content🩵
+      <span id="timerContent">15</span>
+      <div class="timer-bar" id="barContent"></div>
+    </button>
+
+    <button class="button" id="btnTelegram">
+      Telegram VIP
+      <span id="timerTelegram">15</span>
+      <div class="timer-bar" id="barTelegram"></div>
+    </button>
+  </div>
+
+  <script>
+    function startTimer(buttonId, timerId, barId, url) {
+      const button = document.getElementById(buttonId);
+      const timerSpan = document.getElementById(timerId);
+      const bar = document.getElementById(barId);
+
+      let timer = 15;
+      const interval = setInterval(() => {
+        timer--;
+        timerSpan.textContent = timer;
+
+        // Animación de la barra de progreso
+        bar.style.width = `${(15 - timer) * (100 / 15)}%`;
+
+        if (timer <= 0) {
+          clearInterval(interval);
+          button.disabled = false;
+          button.style.backgroundColor = '#80deea'; /* Azul pastel */
+          button.style.color = '#333';
+          button.style.borderColor = '#4ecaf1'; /* Cambia el borde a azul pastel */
+          button.addEventListener('click', () => {
+            window.location.href = url;
+          });
+        }
+      }, 1000);
+    }
+
+    // Iniciar temporizadores para cada botón
+    startTimer('btnContent', 'timerContent', 'barContent', 'https://example.com/content');
+    startTimer('btnTelegram', 'timerTelegram', 'barTelegram', 'https://example.com/telegram');
+  </script>
+</body>
+</html>
